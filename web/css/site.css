@@ -1,0 +1,291 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.tab-collapse >div{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border: 1px solid #2cc7c1;;
+    background: #9adeff;
+    text-align: left !important;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tab-collapse .count_people, .reys{
+    color: #00aa00;
+    font-size: 25px;
+    padding: 10px 20px;
+}
+.tab-collapse .arrive_date{
+    color: #225722;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+.tab-collapse .depart_date{
+    color: #225722;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px 0;
+}
+.tab-collapse .progs{
+    float: right;
+    color: #225722;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px -48px;
+}
+.tab-collapse .function_count{
+    color: #c9302c;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin: -85px 0;
+}
+.col-group{
+    background: #f0f8ff;
+    padding: 20px 50px;
+    /*margin-top: -15px;*/
+}
+.tab-collapse span{
+    line-height: 1.7;
+}
+.col-group>.row{
+    border: 1px solid #2cc7c1;
+    margin: 5px;
+    border-radius: 5px;
+}
+.col-group .progress,
+.malumot-add .progress{
+    margin-top: 30px;
+    height: 48px;
+}
+.col-group .speed,
+.malumot-add .speed{
+    margin-top: 11px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.img-table{
+    width: 55px;
+    height: 55px;
+    margin: -17px;
+}
+.img-table:hover{
+    border-radius: 3px;
+    transform: scale(2.5);
+    transition:0.6s;
+}
+.group-view thead tr th:last-child{
+     width: 55px !important;
+     /*text-align: center;*/
+ }
+.group-view tbody tr td{
+    color: #00abf0;
+    font-size: 16px;
+    padding: 17px;
+}
+.group-view thead tr th:nth-child(7),
+.group-view thead tr th:nth-child(6),
+.group-view thead tr th:nth-child(5),
+.group-view thead tr th:nth-child(4)
+{
+    width: 100px; !important;
+    text-align: center;
+    font-size: 16px;
+}
+.group-view thead tr th:first-child,
+.group-view tbody tr th:first-child{
+    width: 40px !important;
+    font-size: 16px;
+    text-align: center;
+    padding: 17px;
+}
+.group-view thead tr th:nth-child(2),
+.group-view thead tr th:nth-child(3){
+    text-align: center;
+    font-size: 16px;
+}
+
+/*Malumot index */
+
+.malumot-index thead tr th:last-child{
+    width: 55px !important;
+    /*text-align: center;*/
+}
+.malumot-index tbody tr td{
+    color: #00abf0;
+    font-size: 16px;
+    padding: 17px;
+}
+.malumot-index thead tr th:nth-child(7),
+.malumot-index thead tr th:nth-child(6),
+.malumot-index thead tr th:nth-child(5),
+.malumot-index thead tr th:nth-child(4)
+{
+    width: 100px; !important;
+    text-align: center;
+    font-size: 16px;
+}
+.malumot-index thead tr th:first-child,
+.malumot-index tbody tr th:first-child{
+    width: 40px !important;
+    font-size: 16px;
+    text-align: center;
+    padding: 17px;
+}
+.malumot-index thead tr th:nth-child(2),
+.malumot-index thead tr th:nth-child(3),
+.malumot-index thead tr th:nth-child(8)
+{
+    text-align: center;
+    font-size: 16px;
+}
+.malumot-update h1{
+    padding: 20px 0;
+}
+.saqlash{
+    margin-top: 20px;
+    height: 95px;
+    background: #00abf0;
+    border: 3px inset #00CCFF;
+    border-radius: 10px;
+}
+.prog{
+    margin-top: -100px !important;
+}
+
+.malumot-add thead tr th:nth-child(1)
+{
+    width: 10px !important;
+    text-align: center;
+}
+.malumot-add tbody tr td:nth-child(2),
+.malumot-add tbody tr td:nth-child(3)
+{
+    max-width: 60px;
+    overflow: hidden;
+}
+.malumot-add thead tr th:nth-child(4),
+.malumot-add thead tr th:nth-child(5)
+{
+    width: 83px !important;
+    text-align: center;
+}
+.malumot-add thead tr th:nth-child(6)
+{
+    width: 35px; !important;
+}
+
+.img-table-add,
+.img-table-add-nophoto
+{
+    width: 32px;
+    height: 32px;
+    margin: -8px;
+}
+.img-table-add:hover{
+    border-radius: 3px;
+    transform: scale(2.5);
+    transition:0.6s;
+}
+
+.region-index thead tr th:last-child{
+     width: 70px !important;
+     /*text-align: center;*/
+ }
+.pull-right.add{
+    margin-top: -75px;
+}
+
+.malumot-index .kv-date-remove, .malumot-index .kv-date-calendar{
+    position: absolute;
+}
