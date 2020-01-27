@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Reys */
+/* @var $modelGroups yii\widgets\ActiveForm */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Reys',

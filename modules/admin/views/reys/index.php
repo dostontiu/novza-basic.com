@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="group-index">
     <h1 class="text-center text-info"><?= Html::encode($this->title) ?></h1>
-    <h6 class="text-right"><?= Html::a('Yangi reys yaratish  <i class="glyphicon glyphicon-plus"></i>','reys/create',['class'=>'add-item btn btn-success btn-lg']) ?></h6>
+    <h6 class="text-right"><?= Html::a('Yangi reys yaratish  <i class="glyphicon glyphicon-plus"></i>',['reys/create'],['class'=>'add-item btn btn-success btn-lg']) ?></h6>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     $activePeople = Malumot::find()->where(['in', 'group_id', $g])->count();
                     $prot = $activePeople*100/$rey->count_people;
                     $malumots = Malumot::find()->where(['in', 'group_id', $g])->andWhere(['not', ['function_id' => 1]])->all();
-                    foreach ($malumots as $malumot) {
-                        $function_count[$malumot->function->name]+=1;
-                    }
+//                    foreach ($malumots as $malumot) {
+//                        $function_count[$malumot->function->name]+=1;
+//                    }
                     ?>
                     <div role="tabpanel" class="tab-pane fade active in" id="">
                         <div class="tab-collapse clearfix">

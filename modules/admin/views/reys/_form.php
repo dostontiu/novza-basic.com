@@ -7,8 +7,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
 /* @var $this yii\web\View */
 /* @var $model app\models\Reys */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $modelGroups yii\widgets\ActiveForm */
 $regions = \app\models\Region::MapRegion();
-print_r($d);
 ?>
 
 <div class="reys-form">
@@ -38,7 +38,6 @@ print_r($d);
   ]) ?>
         </div>
         <div class="col-md-4">
-<!--            --><?//= $form->field($model, 'arrive_date')->textInput() ?>
             <?= $form->field($model, 'arrive_date')->widget(\kartik\date\DatePicker::className(), [
                 'language' => 'ru',
                 'pluginOptions' => [

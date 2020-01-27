@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Reys */
+/* @var $modelGroups yii\widgets\ActiveForm */
 
 $this->title = Yii::t('app', 'Yangi reys qo\'shish');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reys'), 'url' => ['index']];

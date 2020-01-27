@@ -174,12 +174,12 @@ class MalumotController extends AppAdminController
     }
     
     public function actionChangeGroup(){
-        $group = Yii::$app->request->get('id');
+        $group = Yii::$app->request->post('id');
         if (isset($group)) {
             $session = Yii::$app->session;
             $session->open();
             $session->set('group', $group);
-            return $this->redirect('add');
+            return $this->redirect(Yii::$app->request->referrer);
         }
     }
 
@@ -203,9 +203,9 @@ class MalumotController extends AppAdminController
     }
 
     public function actionLast(){
-        $mahram_name_id = Yii::$app->request->get('mahram_name_id');
-        $mahram_id = Yii::$app->request->get('mahram_id');
-        $model = $this->findModel(Yii::$app->request->get('id'));
+        $mahram_name_id = Yii::$app->request->post('mahram_name_id');
+        $mahram_id = Yii::$app->request->post('mahram_id');
+        $model = $this->findModel(Yii::$app->request->post('id'));
         if (($mahram_name_id && $mahram_id) || (!$mahram_name_id && !$mahram_id)){
             $model->address = Yii::$app->request->get('address');
             $model->tel_number = Yii::$app->request->get('tel_number');
@@ -219,7 +219,7 @@ class MalumotController extends AppAdminController
                 Yii::$app->session->setFlash('error', "Tahrirlashda xatolik sodir bo'ldi. Yana qayta urirnib ko'ring");
             }
         }
-        return $this->redirect('add');
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

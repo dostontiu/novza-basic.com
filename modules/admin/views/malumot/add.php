@@ -26,7 +26,7 @@ $mahram_names = MahramName::find()->all();
     <div class="row">
         <div class="col-md-7">
             <div class="row">
-                <form action="change-group" method="get" name="group">
+                <?php $form = ActiveForm::begin(['id' => 'group', 'action' => ['change-group']]); ?>
                     <?php foreach ($groups as $group):?>
                         <?php if ($group->id==Yii::$app->session->get('group')): ?>
                             <div class="col-md-3 col-sm-6">
@@ -52,7 +52,7 @@ $mahram_names = MahramName::find()->all();
                             </div>
                         <?php endif;?>
                     <?php endforeach;?>
-                </form>
+                <?php ActiveForm::end(); ?>
             </div>
             <?php if ($count_people >= $count): ?>
             <div class="row">
@@ -65,7 +65,6 @@ $mahram_names = MahramName::find()->all();
                 </div>
                 <?php ActiveForm::end(); ?>
             </div>
-                <?php  echo $this->render('last') ?>
             <div class="row">
                 <div class="col-md-12">
                     <?php if(!empty($messages)): ?>
@@ -111,7 +110,7 @@ $mahram_names = MahramName::find()->all();
                                 <?= (file_exists("img/inch/{$findOne['p_number']}.jpg"))?Html::img("/img/inch/{$findOne['p_number']}.jpg",['style'=>'max-width:180px',]):Html::img("/img/dump/nophoto.png",['style'=>'max-width:220px',]);?>
                                 <input name="img" style="float: left" class="" type="file" id="img">
                             </div>
-                            <form action="last" method="get">
+                            <?php $form = ActiveForm::begin(['id' => 'last', 'action' => ['last']]); ?>
                                 <input type="hidden" name="id" value="<?=$findOne['id']?>">
                                 <?php if ($findOne['gender']==0 && date('Y', strtotime($findOne['d_birth']))>=1973): ?>
                                     <div class="row">
@@ -147,7 +146,7 @@ $mahram_names = MahramName::find()->all();
                                         <?= Html::submitButton('Tahrirlash', ['class' => 'btn btn-info btn-block']) ?>
                                     </div>
                                 </div>
-                            </form>
+                            <?php ActiveForm::end(); ?>
                         </div>
                     </div>
                 </div>
@@ -181,6 +180,7 @@ $mahram_names = MahramName::find()->all();
                 <div class="speed text-success" title="Guruhga yana <?=$count_people-$count?> ta ziyoratchi kiritilishi kerak"><?=$count_people-$count?></div>
             </div>
             <?php if ($count!=0): ?>
+            <?php $id = 0 ?>
             <table class="table table-hover table-bordered">
                 <thead>
                 <tr>

@@ -8,21 +8,37 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\helpers\Url;
+use yii\web\Controller;
 
-class SiteController extends AppController
+class SiteController extends Controller
 {
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['login', 'error', 'signup'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'error'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    /*[
+                        'actions' => ['signup', 'login'],
+                        'allow' => true, // not allowed actions but not working
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return 'not allowed';
+                        },
+                    ],*/
                 ],
             ],
             'verbs' => [
@@ -33,63 +49,69 @@ class SiteController extends AppController
             ],
         ];
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function actions()
     {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
-
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
     public function actionIndex()
     {
-        $this->setMeta('Haj va Umra');
         return $this->render('index');
     }
-
+    /**
+     * Login action.
+     *
+     * @return string
+     */
     public function actionLogin()
     {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
+        } else {
+            $model->password = '';
+            return $this->render('login', [
+                'model' => $model,
+            ]);
         }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
     }
-
+    /**
+     * Logout action.
+     *
+     * @return string
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
-
-    public function actionContact()
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && $user = $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Спасибо за регистрацию.');
+            if(Yii::$app->getUser()->login($user)){
+                return $this->goHome();
+            }
         }
-        return $this->render('contact', [
+        return $this->render('signup', [
             'model' => $model,
         ]);
-    }
-
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }
